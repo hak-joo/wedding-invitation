@@ -1,0 +1,13 @@
+{
+    "name": "wedding-invitation-front",
+    "private": true,
+    "version": "0.0.1",
+    "scripts": {
+      "dev": "vite",
+      "build": "vue-tsc --noEmit && vite build",
+      "preview": "vite preview",
+      "watch": "vue-tsc --noEmit && vite build --watch",
+      "lint": "eslint .",
+      "prettier": "npx prettier --write ."
+    }
+  }
