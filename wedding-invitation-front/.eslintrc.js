@@ -1,16 +1,19 @@
 module.exports = {
-  parser: "@typescript-eslint/parser",
+  root: true,
   env: {
-    browser: true,
+    node: true,
   },
   extends: [
-    'eslint:recommended', // eslint basic
-    'plugin:@typescript-eslint/recommended', // @typescript-eslint/eslint-plugin
-    'prettier/@typescript-eslint',  // eslint의 typescript formatting 기능 제거 (eslint-config-prettier)          
-    'plugin:prettier/recommended',  // eslint-plugin-prettier, eslint-config-prettier
-    'plugin:vue/essential' 
+    'plugin:vue/vue3-essential',
+    'eslint:recommended',
+    '@vue/typescript/recommended',
+    'plugin:prettier/recommended',
   ],
+  parserOptions: {
+    ecmaVersion: 2020,
+  },
   rules: {
+    'vue/multi-word-component-names': 'off',
     'max-len': [
       'warn',
       {
