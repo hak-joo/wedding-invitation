@@ -3,13 +3,27 @@
     <div v-if="props.isShow" class="contents" @scroll="scrolling">
       <div class="content">
         <img class="fade-in" :src="Image" />
-        <div
-          v-for="(message, idx) in messages"
-          :key="idx"
-          class="fade-in content__str"
-        >
-          {{ message }}
+        <div class="fade-in content__str">
+          <div>
+            <span class="large">김김김</span>
+            <span class="middle">ㄴㅁㅇㅁㄴㅇ</span>
+            <span class="large">김김김</span>
+          </div>
+          <div>
+            <span class="large">김김김</span>
+            <span class="middle">ㄴㅁㅇㅁㄴㅇ</span>
+            <span class="large">김김김</span>
+          </div>
+          <button class="btn">클릭</button>
         </div>
+
+        <div v-for="(message, idx) in messages" :key="idx" class="fade-in">
+          <DropDown label="신랑측 계좌번호">
+            {{ message }}
+          </DropDown>
+        </div>
+
+        <div class="account-info"></div>
       </div>
     </div>
   </Transition>
@@ -17,6 +31,7 @@
 
 <script setup lang="ts">
 import { onMounted } from "vue";
+import DropDown from "@/components/drop-down/index.vue";
 import Image from "@/assets/images/photo.jpeg";
 
 const scrolling = (e: Event) => {
@@ -63,15 +78,17 @@ onMounted(() => {
 .image {
   max-width: 100%;
 }
+
+.account-info {
+}
 .content {
   width: 100%;
-  border: 1px solid gray;
+
   display: flex;
   flex-direction: column;
   height: fit-content;
-
+  padding: 20px 50px;
   &__str {
-    padding: 20px 50px;
     text-align: center;
     font-size: 20px;
     line-height: 40px;
