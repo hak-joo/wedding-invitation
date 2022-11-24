@@ -14,7 +14,7 @@
             <span class="middle">ㄴㅁㅇㅁㄴㅇ</span>
             <span class="large">김김김</span>
           </div>
-          <button class="btn">클릭</button>
+          <button class="btn" @click="isModalView = !isModalView">클릭</button>
         </div>
 
         <div v-for="(message, idx) in messages" :key="idx" class="fade-in">
@@ -25,14 +25,19 @@
 
         <div class="account-info"></div>
       </div>
-    </div>
-  </Transition>
+    </div> </Transition
+  ><Modal
+    v-if="isModalView"
+    :is-show="isModalView"
+    @update:is-show="(val) => (isModalView = val)"
+  ></Modal>
 </template>
 
 <script setup lang="ts">
-import { onMounted } from "vue";
+import { onMounted, ref } from "vue";
 import DropDown from "@/components/drop-down/index.vue";
 import Image from "@/assets/images/photo.jpeg";
+import Modal from "@/components/modal/index.vue";
 
 const scrolling = (e: Event) => {
   const fadeInElements = document.getElementsByClassName("fade-in");
@@ -60,6 +65,8 @@ const messages = [
   "그대 자신의 영혼을 탐구하라.다른 누구에게도 의지하지 말고 오직 그대 혼자의 힘으로 하라. 그대의 여정에 다른 이들이 끼어들지 못하게 하라. 이 길은 그대만의 길이요, 그대 혼자 가야할 길임을 명심하라. 비록 다른 이들과 함께 걸을 수는 있으나 다른 그 어느 누구도 그대가 선택한 길을 대신 가줄 수 없음을 알라.-인디언 속담",
 ];
 const props = defineProps<{ isShow: boolean }>();
+
+const isModalView = ref(false);
 onMounted(() => {
   document.addEventListener("scroll", scrolling);
 });
